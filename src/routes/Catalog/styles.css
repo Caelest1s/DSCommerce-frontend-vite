@@ -1,0 +1,18 @@
+/* ID */
+#dsc-catalog-section {
+    padding: 20px 0;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------> */
+/* card style*/
+.dsc-catalog-cards {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    /*autofill -> preenchimento automatico; minmax() -> minimo da largura e o maximo da largura*/
+}
+
+
+
+
+
