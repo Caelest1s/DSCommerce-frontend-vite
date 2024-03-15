@@ -27,7 +27,7 @@ export default function () {
                         <CatalogCard />
                     </div>
 
-                    <ButtonNextPage />
+                    <ButtonNextPage name="Carregar mais"/>
 
                 </section>
             </main>
