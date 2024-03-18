@@ -1,13 +1,13 @@
 import './styles.css';
 
 type Props = {
-    name: string;
+    text: string;
 }
 
-export default function ButtonNextPage({name}: Props) {
+export default function ButtonNextPage({text}: Props) {
     return (
         <div className="dsc-btn-next-page">
-            {name}
+            {text}
         </div>
     );
 }
