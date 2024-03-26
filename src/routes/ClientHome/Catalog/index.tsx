@@ -1,30 +1,9 @@
 import ButtonNextPage from '../../../components/ButtonNextPage';
 import CatalogCard from '../../../components/CatalogCard';
 import SearchBar from '../../../components/SearchBar';
-import { ProductDTO } from '../../../models/product';
+import * as productService from '../../../services/product-service';
 import './styles.css';
 
-const product: ProductDTO = {
-    id: 2,
-    name: "Smart TV",
-    description: "Computador Gamer XT com suporte e 16GB de memória e processador turbo plus",
-    imgUrl: "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/2-big.jpg",
-    price: 2500.99,
-    categories: [
-        {
-            id: 2,
-            name: "Eletrônicos"
-        },
-        {
-            id: 3,
-            name: "Computadores"
-        },
-        {
-            id: 4,
-            name: "Importados"
-        }
-    ]
-}
 
 export default function Catalog() {
     return (
@@ -33,18 +12,14 @@ export default function Catalog() {
                 <SearchBar />
 
                 <div className="dsc-catalog-cards dsc-mt20 dsc-mb20">
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
-                    <CatalogCard product={product} />
+
+                    {
+                        productService.findAll().map(
+                            /* renderizar uma coleção com react necessário da chave KEY */
+                            product => <CatalogCard key={product.id} product={product} />
+                        )
+                        
+                    }
                 </div>
 
                 <ButtonNextPage text="Carregar mais" />
