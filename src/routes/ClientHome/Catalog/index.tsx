@@ -12,13 +12,11 @@ export default function Catalog() {
                 <SearchBar />
 
                 <div className="dsc-catalog-cards dsc-mt20 dsc-mb20">
-
                     {
                         productService.findAll().map(
                             /* renderizar uma coleção com react necessário da chave KEY */
                             product => <CatalogCard key={product.id} product={product} />
                         )
-                        
                     }
                 </div>
 
