@@ -19,7 +19,6 @@ export default function CatalogCard({ product }: Props) {
                     <h4>{product.name}</h4>
                 </div>
             </div>
-
         </Link>
     );
 }
