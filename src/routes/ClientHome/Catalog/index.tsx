@@ -9,14 +9,12 @@ import './styles.css';
 
 export default function Catalog() {
 
+    /* seta um array productDTO*/
     const [products, setProducts] = useState<ProductDTO[]>([]);
 
     useEffect(() => {
         productService.findAll()
-        .then(response => {
-            setProducts(response.data.content);
-        })
-    }, [])
+        .then(response => {setProducts(response.data.content);})}, [])
 
     return (
         <main>

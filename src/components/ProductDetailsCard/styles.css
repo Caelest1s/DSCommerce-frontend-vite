@@ -29,8 +29,5 @@
 .dsc-product-details-bottom p {
     color: var(--dsc-color-font-primary);
     font-size: 12px;
-    /* Quando tem 1 medida ele aplica em todos
-    /* Quando tem 2 medidas ele aplica na vertical e horizontal
-    /* Quando tem 4 medidas ele aplica na top-left top-right bottom-right bottom-left*/
     margin: 10px 0;
 }

@@ -5,7 +5,7 @@ import './styles.css';
 type Props = {
     product: ProductDTO;
 }
-// Computador Gamer XT com suporte e 16GB de memória e processador turbo plus
+
 export default function CatalogCard({ product }: Props) {
     return (
         

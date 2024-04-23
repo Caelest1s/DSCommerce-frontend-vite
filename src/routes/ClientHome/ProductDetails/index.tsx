@@ -16,19 +16,14 @@ export default function ProductDetails() {
     useEffect(() => {
 
         productService.findById(Number(params.productId))
-            .then(response => {
-                console.log(response.data);
-                setProduct(response.data);
-            });
-    },
-        []);
+            .then(response => { console.log(response.data); setProduct(response.data); });
+    }, []);
 
     return (
-        //fragment <> ... </>
         <main>
             <section id="dsc-product-details-section" className="dsc-container">
-                {/* passo product como argumento. 'product &&' força uma verificação se este é realmente um Obj ProductDTO (e ñ undefined) */}
                 {
+                    // {/* // passo product como argumento. 'product &&' força uma verificação se este é realmente um Obj ProductDTO (e ñ undefined) */}
                     product &&
                     <ProductDetailsCard product={product} />
                 }
