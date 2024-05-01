@@ -14,7 +14,6 @@ function App() {
           <Route path="product-details/:productId" element={<ProductDetails />} />
           <Route path="cart" element={<Cart />} />
         </Route>
-        {/* redireciona para HOME caso entre com qualquer caminho diferente do esperado */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
