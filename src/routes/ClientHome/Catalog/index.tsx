@@ -6,29 +6,36 @@ import { ProductDTO } from '../../../models/product';
 import * as productService from '../../../services/product-service';
 import './styles.css';
 
+type QueryParams = {
+    page: number;
+    name: string;
+}
 
 export default function Catalog() {
 
     /* seta um array productDTO*/
     const [products, setProducts] = useState<ProductDTO[]>([]);
 
-    const [productName, setProductName] = useState("");
+    const [queryParams, setQueryParams] = useState<QueryParams>({
+        page: 0,
+        name: ""
+    });
 
     useEffect(() => {
-        productService.findPageRequest(0, productName)
+        productService.findPageRequest(queryParams.page, queryParams.name)
             .then(response => {
                 setProducts(response.data.content);
             });
-    }, [productName]);
+    }, [queryParams]);
 
-    function handleSearch(searchText: string){
-        setProductName(searchText);
+    function handleSearch(searchText: string) {
+        setQueryParams({ ...queryParams, name: searchText });
     }
 
     return (
         <main>
             <section id="dsc-catalog-section" className="dsc-container">
-                <SearchBar onSearch={handleSearch}/>
+                <SearchBar onSearch={handleSearch} />
 
                 <div className="dsc-catalog-cards dsc-mt20 dsc-mb20">
                     {
