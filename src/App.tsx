@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ClientHome from './routes/ClientHome';
 import Cart from './routes/ClientHome/Cart';
 import Catalog from './routes/ClientHome/Catalog';
+import Login from './routes/ClientHome/Login';
 import ProductDetails from './routes/ClientHome/ProductDetails';
 import * as CartService from './services/cart-service';
 import { ContextCartCount } from './utils/context-cart';
@@ -16,7 +17,6 @@ function App() {
   return (
     // assim posso usar este estado quando necessário e onde for necessário
     <ContextCartCount.Provider value={{ contextCartCount, setContextCartCount }} >
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ClientHome />} >
@@ -24,11 +24,11 @@ function App() {
             <Route path="catalog" element={<Catalog />} />
             <Route path="product-details/:productId" element={<ProductDetails />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="login" element={<Login />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
-
     </ContextCartCount.Provider>
   );
 }

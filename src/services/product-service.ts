@@ -1,14 +1,13 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { BASE_URL } from "../utils/system";
+import { AxiosRequestConfig } from "axios";
+import { requestBackend } from "../utils/requests";
 
 /* retorna uma coleção de Produtos -> o retorno é apontado como último dentro do escopo/sintaxe do método */
 export function findPageRequest(page: number, name: string, size = 12, sort = "name") {
     const config: AxiosRequestConfig = {
         method: "GET",
-        baseURL: BASE_URL,
         url: "/products",
         params: {
-            // {page: page,} o javascript simplifica e entende isto apenas chamando nome do parametro.
+            // {page: page, ...} o javascript simplifica e entende isto apenas chamando nome do parametro.
             page,
             name,
             size,
@@ -16,9 +15,10 @@ export function findPageRequest(page: number, name: string, size = 12, sort = "n
         }
     }
     // axios.get(`${BASE_URL}/products?size=12`)
-    return axios(config);
+    return requestBackend(config);
 }
 
 export function findById(id: number) {
-    return axios.get(`${BASE_URL}/products/${id}`);
+    return requestBackend({ url: `/products/${id}` });
+    // axios.get(`${BASE_URL}/products/${id}`);
 }
