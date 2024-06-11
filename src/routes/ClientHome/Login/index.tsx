@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { CredentialsDTO } from '../../../models/auth';
-import { loginRequest } from '../../../services/auth-service';
+import * as authService from '../../../services/auth-service';
 import './styles.css';
 
 export default function Login() {
@@ -12,8 +12,19 @@ export default function Login() {
 
     function handleSubmit(event: any) {
         event.preventDefault();
+        authService.loginRequest(formData)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log("Erro no login", error);
+            })
+    }
 
-        loginRequest(formData);
+    function handleInputChange(event: any) {
+        const name = event.target.name;
+        const value = event.target.value;
+        setFormData({ ...formData, [name]: value })
     }
 
     return (
@@ -25,13 +36,22 @@ export default function Login() {
                         <div className="dsc-form-controls-container">
                             <div>
                                 <input
+                                    name="username"
+                                    value={formData.username}
+                                    onChange={handleInputChange}
                                     type="text"
                                     placeholder="Email"
                                     className="dsc-form-control" />
                                 {/* <div className="dsc-form-error">Campo obrigatório</div> */}
                             </div>
                             <div>
-                                <input className="dsc-form-control" type="password" placeholder="Senha" />
+                                <input
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={handleInputChange}
+                                    className="dsc-form-control"
+                                    type="password"
+                                    placeholder="Senha" />
                             </div>
                         </div>
 
