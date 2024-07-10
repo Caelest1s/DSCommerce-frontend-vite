@@ -1,7 +1,7 @@
 import { default as homeIcon, default as productsIcon } from '../../assets/home.svg.svg';
 import './styles.css';
 
-function HeaderAdmin() {
+export default function HeaderAdmin() {
     return (
         <header className="dsc-header-admin">
             <nav className="dsc-container">
@@ -26,5 +26,3 @@ function HeaderAdmin() {
         </header>
     );
 }
-
-export default HeaderAdmin

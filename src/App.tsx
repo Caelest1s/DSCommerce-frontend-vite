@@ -28,9 +28,11 @@ function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="login" element={<Login />} />
           </Route>
+
           <Route path='/admin/' element={<Admin />} >
             <Route index element={<AdminHome />} />
           </Route>
+
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
