@@ -37,12 +37,14 @@
     font-family: 'Open Sans';
 }
 
-a, a:hover {
+a,
+a:hover {
     text-decoration: none;
     color: unset;
 }
 
-html, body {
+html,
+body {
     font-family: "Montserrat", sans-serif;
     background-color: var(--dsc-color-bg-primary);
 }
@@ -96,13 +98,8 @@ header {
     padding: 0 20px;
 }
 
-.dsc-header-admin {
-    background-color: var(--dsc-color-bg-quaternary);
-    color: var(--dsc-color-font-tertiary);
-}
-
 nav {
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -125,7 +122,8 @@ nav a {
 .dsc-menu-items-container {
     display: flex;
 }
-.dsc-menu-items-container img{
+
+.dsc-menu-items-container img {
     width: 20px;
     height: 20px;
 }
@@ -160,6 +158,7 @@ nav a {
     nav h1 {
         font-size: 24px;
     }
+
     .dsc-menu-item p {
         display: unset;
     }
@@ -242,7 +241,8 @@ nav a {
     height: 400;
     padding: 0 20px;
     color: var(--dsc-color-font-primary);
-    border: 1px solid var(--dsc-color-card-border);;
+    border: 1px solid var(--dsc-color-card-border);
+    ;
     border-radius: 4px;
 }
 
@@ -253,6 +253,7 @@ nav a {
 .dsc-form-control::placeholder {
     color: var(--dsc-color-font-placeholder);
 }
+
 /* ----------------------------------------------------------------------------------------------------------------------------> */
 /* select styles, config para alterar a cor e apresentação */
 .dsc-select:invalid {
@@ -295,7 +296,7 @@ nav a {
     background-color: var(--dsc-color-card-bg);
 }
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
     .dsc-table tbody {
         font-size: 16px;
     }
@@ -327,20 +328,24 @@ nav a {
     display: none;
 }
 
-@media (min-width: 576px){
+@media (min-width: 576px) {
     .dsc-tb576 {
         display: table-cell;
     }
+
     .dsc-table th:nth-child(1) {
         padding-left: 20px;
         border-top-left-radius: 10px;
     }
+
     .dsc-table th:nth-child(2) {
         border-top-left-radius: 0;
     }
+
     .dsc-table td:nth-child(1) {
         padding-left: 20px;
     }
+
     .dsc-table td:nth-child(2) {
         padding-left: 0;
     }
@@ -350,7 +355,7 @@ nav a {
     display: none;
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
     .dsc-tb768 {
         display: table-cell;
     }
@@ -362,7 +367,7 @@ nav a {
     border: 1px solid var(--dsc-color-error);
 }
 
-.dsc-form-error{
+.dsc-form-error {
     color: var(--dsc-color-error);
     font-size: 12px;
     padding-left: 4px;
