@@ -11,6 +11,7 @@ import * as CartService from './services/cart-service';
 import { ContextCartCount } from './utils/context-cart';
 
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
+import { PrivateRoute } from './components/PrivateRoute';
 import { history } from './utils/history';
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
             <Route path="login" element={<Login />} />
           </Route>
 
-          <Route path='/admin/' element={<Admin />} >
+          {/* Not necessary sent to backend */}
+          <Route path="/admin/" element={<PrivateRoute><Admin /></PrivateRoute>} >
             <Route index element={<AdminHome />} />
           </Route>
 
