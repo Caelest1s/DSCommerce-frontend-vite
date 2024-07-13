@@ -48,7 +48,7 @@ function App() {
               <Route path="cart" element={<Cart />} />
               <Route path="login" element={<Login />} />
               {/* utiliza mesmo nome passado pelo params */}
-              <Route path="confirmation/:orderId" element={<Confirmation />} />
+              <Route path="confirmation/:orderId" element={<PrivateRoute><Confirmation /></PrivateRoute>} />
             </Route>
 
             {/* Not necessary sent to backend */}
