@@ -13,6 +13,7 @@ import { ContextCartCount } from './utils/context-cart';
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import { AccessTokenPayloadDTO } from './models/auth';
+import Confirmation from './routes/Confirmation';
 import * as authService from './services/auth-service';
 import { ContextToken } from './utils/context-token';
 import { history } from './utils/history';
@@ -46,6 +47,8 @@ function App() {
               <Route path="product-details/:productId" element={<ProductDetails />} />
               <Route path="cart" element={<Cart />} />
               <Route path="login" element={<Login />} />
+              {/* utiliza mesmo nome passado pelo params */}
+              <Route path="confirmation/:orderId" element={<Confirmation />} />
             </Route>
 
             {/* Not necessary sent to backend */}
