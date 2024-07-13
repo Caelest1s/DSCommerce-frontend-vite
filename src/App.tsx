@@ -13,6 +13,8 @@ import { ContextCartCount } from './utils/context-cart';
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import { AccessTokenPayloadDTO } from './models/auth';
+import ProductForm from './routes/Admin/ProductForm';
+import ProductListing from './routes/Admin/ProductListing';
 import Confirmation from './routes/Confirmation';
 import * as authService from './services/auth-service';
 import { ContextToken } from './utils/context-token';
@@ -53,7 +55,10 @@ function App() {
 
             {/* Not necessary sent to backend */}
             <Route path="/admin/" element={<PrivateRoute roles={['ROLE_ADMIN']}><Admin /></PrivateRoute>} >
-              <Route index element={<AdminHome />} />
+              <Route index element={<Navigate to="/admin/home" />} />
+              <Route path="home" element={<AdminHome />} />
+              <Route path="products" element={<ProductListing />} />
+              <Route path="products/:productId" element={<ProductForm />} />
             </Route>
 
             <Route path="*" element={<Navigate to="/" />} />
