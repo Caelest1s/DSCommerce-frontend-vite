@@ -1,9 +1,35 @@
-import computerIcon from '../../../assets/computer.png';
+import { useEffect, useState } from 'react';
 import deleteIcon from '../../../assets/delete.svg';
 import editIcon from '../../../assets/edit.svg';
+import { ProductDTO } from '../../../models/product';
+import * as productService from '../../../services/product-service';
 import './styles.css';
 
+type QueryParams = {
+    page: number;
+    name: string;
+}
+
 export default function ProductListing() {
+
+    const [isLastPage, setIsLastPage] = useState(false);
+
+    /* seta um array productDTO*/
+    const [products, setProducts] = useState<ProductDTO[]>([]);
+
+    const [queryParams, setQueryParams] = useState<QueryParams>({
+        page: 0,
+        name: ""
+    });
+
+    useEffect(() => {
+        productService.findPageRequest(queryParams.page, queryParams.name)
+            .then(response => {
+                const nextPage = response.data.content;
+                setProducts(products.concat(nextPage));
+                setIsLastPage(response.data.last);
+            });
+    }, [queryParams]);
 
     return (
         <main>
@@ -32,102 +58,18 @@ export default function ProductListing() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
-                        <tr>
-                            <td className="dsc-tb576">341</td>
-                            <td><img className="dsc-product-listing-image" src={computerIcon} alt="Computer" /></td>
-                            <td className="dsc-tb768">R$ 5000,00</td>
-                            <td className="dsc-txt-left">Computador Gamer XT Plus Ultra</td>
-                            <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                            <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
-                        </tr>
+                        {
+                            products.map(product => (
+                                <tr>
+                                    <td className="dsc-tb576">{product.id}</td>
+                                    <td><img className="dsc-product-listing-image" src={product.imgUrl} alt={product.name} /></td>
+                                    <td className="dsc-tb768">R$ {product.price.toFixed(2)}</td>
+                                    <td className="dsc-txt-left">{product.name}</td>
+                                    <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
+                                    <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
+                                </tr>
+                            ))
+                        }
                     </tbody>
                 </table>
 
