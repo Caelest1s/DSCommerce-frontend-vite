@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import deleteIcon from '../../../assets/delete.svg';
 import editIcon from '../../../assets/edit.svg';
+import ButtonNextPage from '../../../components/ButtonNextPage';
 import SearchBar from '../../../components/SearchBar';
 import { ProductDTO } from '../../../models/product';
 import * as productService from '../../../services/product-service';
@@ -79,7 +80,10 @@ export default function ProductListing() {
                     </tbody>
                 </table>
 
-                <div className="dsc-btn-next-page">Carregar mais</div>
+                {
+                    !isLastPage &&
+                    <ButtonNextPage onNextPage={handleNextPageClick} />
+                }
             </section>
         </main>
     );
