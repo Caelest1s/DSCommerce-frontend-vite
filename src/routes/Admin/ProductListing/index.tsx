@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import deleteIcon from '../../../assets/delete.svg';
 import editIcon from '../../../assets/edit.svg';
 import ButtonNextPage from '../../../components/ButtonNextPage';
+import DialogInfo from '../../../components/DialogInfo';
 import SearchBar from '../../../components/SearchBar';
 import { ProductDTO } from '../../../models/product';
 import * as productService from '../../../services/product-service';
@@ -85,6 +86,7 @@ export default function ProductListing() {
                     <ButtonNextPage onNextPage={handleNextPageClick} />
                 }
             </section>
+            <DialogInfo />
         </main>
     );
 }
