@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import deleteIcon from '../../../assets/delete.svg';
 import editIcon from '../../../assets/edit.svg';
 import ButtonNextPage from '../../../components/ButtonNextPage';
+import DialogConfirmation from '../../../components/DialogConfirmation';
 import DialogInfo from '../../../components/DialogInfo';
 import SearchBar from '../../../components/SearchBar';
 import { ProductDTO } from '../../../models/product';
@@ -14,6 +15,11 @@ type QueryParams = {
 }
 
 export default function ProductListing() {
+
+    const [dialogConfirmationData, setDialogConfirmationData] = useState({
+        visible: false,
+        message: "Tem certeza?"
+    });
 
     const [dialogInfoData, setDialogInfoData] = useState({
         visible: false,
@@ -53,7 +59,12 @@ export default function ProductListing() {
     }
 
     function handleDeleteClick() {
-        setDialogInfoData({ ...dialogInfoData, visible: true });
+        setDialogConfirmationData({ ...dialogConfirmationData, visible: true });
+    }
+
+    function handleDialogConfirmationAnswer(answer: boolean) {
+        console.log("resposta: " + answer);
+        setDialogConfirmationData({ ...dialogConfirmationData, visible: false });
     }
 
     return (
@@ -104,6 +115,11 @@ export default function ProductListing() {
                 dialogInfoData.visible &&
                 <DialogInfo message={dialogInfoData.message}
                     onDialogClose={handleDialogInfoClose} />
+            }
+            {
+                dialogConfirmationData.visible &&
+                <DialogConfirmation message={dialogConfirmationData.message}
+                    onDialogAnswer={handleDialogConfirmationAnswer} />
             }
         </main>
     );
