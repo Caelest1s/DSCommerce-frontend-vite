@@ -49,7 +49,13 @@ export default function Login() {
     function handleInputChange(event: any) {
         const name = event.target.name;
         const value = event.target.value;
-        setFormData(forms.update(formData, name, value));
+        const result = forms.updateValidated(formData, name, value);
+        setFormData(result);
+    }
+
+    function handleTurnDirty(name: string) {
+        const newFormData = forms.dirtyValidated(formData, name);
+        setFormData(newFormData);
     }
 
     return (
@@ -68,14 +74,16 @@ export default function Login() {
                                     // type="text"
                                     // placeholder="Email"
                                     className="dsc-form-control"
+                                    onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
-                                {/* <div className="dsc-form-error">Campo obrigatório</div> */}
+                                <div className="dsc-form-error" />
                             </div>
                             <div>
                                 <FormInput
                                     {...formData.password}
                                     className="dsc-form-control"
+                                    onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
                             </div>
