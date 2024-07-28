@@ -20,7 +20,7 @@ export default function ProductForm() {
             placeholder: "Nome",
         },
         price: {
-            value: 0,
+            value: "",
             id: "price",
             name: "price",
             type: "number",
@@ -40,15 +40,10 @@ export default function ProductForm() {
     });
 
     useEffect(() => {
-
-        const obj = forms.validate(formData, "price");
-        console.log(obj);
-        // console.log("Valor: " + obj.price.value + " Invalido " + obj.price.invalid);
-
         if (isEditing) {
             productService.findById(Number(params.productId))
                 .then(response => {
-                    const newFormData = forms.updateAll(formData, response.data)
+                    const newFormData = forms.updateAll(formData, response.data);
                     setFormData(newFormData);
                 });
         }
@@ -57,7 +52,11 @@ export default function ProductForm() {
     function handleInputChange(event: any) {
         const name = event.target.name;
         const value = event.target.value;
-        setFormData(forms.update(formData, name, value));
+
+        const dataUpdate = forms.update(formData, name, value);
+        const dataValidated = forms.validate(dataUpdate, name);
+
+        setFormData(dataValidated);
     }
 
     return (
@@ -73,6 +72,7 @@ export default function ProductForm() {
                                     className="dsc-form-control"
                                     onChange={handleInputChange}
                                 />
+                                <div className="dsc-form-error">{formData.name.message}</div>
                             </div>
                             <div>
                                 <FormInput
@@ -80,6 +80,7 @@ export default function ProductForm() {
                                     className="dsc-form-control"
                                     onChange={handleInputChange}
                                 />
+                                <div className="dsc-form-error">{formData.price.message}</div>
                             </div>
                             <div>
                                 <FormInput

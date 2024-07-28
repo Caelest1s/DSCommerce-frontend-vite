@@ -248,7 +248,6 @@ nav a {
     padding: 0 20px;
     color: var(--dsc-color-font-primary);
     border: 1px solid var(--dsc-color-card-border);
-    ;
     border-radius: 4px;
 }
 
@@ -258,6 +257,15 @@ nav a {
 
 .dsc-form-control::placeholder {
     color: var(--dsc-color-font-placeholder);
+}
+
+.dsc-form-control[data-invalid="true"] {
+    border: 1px solid var(--dsc-color-error);
+}
+
+/* proximo elemento ("~" div) será acionado */
+.dsc-form-control[data-invalid="true"]~div {
+    display: unset;
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------> */
@@ -413,12 +421,10 @@ nav a {
 
 /* ----------------------------------------------------------------------------------------------------------------------------> */
 /* message errors */
-.dsc-input-error {
-    border: 1px solid var(--dsc-color-error);
-}
 
 .dsc-form-error {
     color: var(--dsc-color-error);
     font-size: 12px;
     padding-left: 4px;
+    display: none;
 }
