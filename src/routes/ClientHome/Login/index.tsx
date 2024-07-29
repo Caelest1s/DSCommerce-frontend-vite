@@ -20,6 +20,7 @@ export default function Login() {
             type: "text",
             placeholder: "Email",
             validation: function (value: string) {
+                // linguagem (email, password, tutti quantti) regex -> regular expression
                 return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value.toLowerCase());
             },
             message: "Favor informar um email válido",
@@ -77,7 +78,7 @@ export default function Login() {
                                     onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
-                                <div className="dsc-form-error" />
+                                <div className="dsc-form-error"> {formData.username.message}</div>
                             </div>
                             <div>
                                 <FormInput
